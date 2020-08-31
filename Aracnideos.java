@@ -2,11 +2,19 @@
 
 public class Aracnideos
 {
-	private int pernas = 8;
+	private int pernas;
 	private int quantidadeOlhos;
 	private boolean peconhento;
 	private String cor;
 	private Regiao regiao = new Regiao();
+
+	public Aracnideos()
+	{
+		pernas = 8;
+		quantidadeOlhos = 0;
+		peconhento = true;
+		cor = "";
+	}
 
 	public int getPernas()
 	{
@@ -56,5 +64,10 @@ public class Aracnideos
 	public void setRegiao(Regiao regiao)
 	{
 		this.regiao = regiao;
+	}
+
+	public void peconhento()
+	{
+		System.out.println("Aracnideo peconhento");
 	}
 }

@@ -5,23 +5,40 @@ public class Run
 	public static void main(String[] args)
 	{
 		Leitura leitura = new Leitura();
-		Aracnideos aracnideo =  new Aracnideos();
+		//Aracnideos aracnideo =  new Aracnideos();
+		Aranha omiranha =  new Aranha();
 
-		aracnideo.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Entre com a quantidade de olhos: ")));
+		omiranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Entre com a quantidade de olhos: ")));
 
-		aracnideo.setPeconhento(Boolean.parseBoolean(leitura.entDados("Peconhento? (true or false): ")));
+		omiranha.setPeconhento(Boolean.parseBoolean(leitura.entDados("Peconhento? (true or false): ")));
 
-		aracnideo.setCor(leitura.entDados("Entre com a cor: "));
+		omiranha.setCor(leitura.entDados("Entre com a cor: "));
 
-		aracnideo.getRegiao().setPais(leitura.entDados("Entre com o pais de origem: "));
+		omiranha.getRegiao().setPais(leitura.entDados("Entre com o pais de origem: "));
 
-		aracnideo.getRegiao().setEstado(leitura.entDados("Entre com o estado de origem: "));
+		omiranha.getRegiao().setEstado(leitura.entDados("Entre com o estado de origem: "));
 
-		System.out.println("Pernas: "+ aracnideo.getPernas());
-		System.out.println("Olhos: "+ aracnideo.getQuantidadeOlhos());
-		System.out.println("Peconhento: "+ aracnideo.getPeconhento());
-		System.out.println("Cor: "+ aracnideo.getCor());
-		System.out.println("Pais: "+ aracnideo.getRegiao().getPais());
-		System.out.println("Estado: "+ aracnideo.getRegiao().getEstado());
+		omiranha.setTeia(Boolean.parseBoolean(leitura.entDados("Produz teia? (true or false): ")));
+
+		if(omiranha.getPeconhento())
+		{
+			omiranha.setVeneno(leitura.entDados("Nome do veneno: "));
+			omiranha.peconhento(omiranha.getVeneno());
+		}
+		
+		omiranha.seda();
+
+		omiranha.seda(omiranha.getTeia());
+
+		omiranha.peconhento(omiranha.getPeconhento());
+		
+		System.out.println("\nPernas: "+ omiranha.getPernas());
+		System.out.println("Olhos: "+ omiranha.getQuantidadeOlhos());
+		//System.out.println("Peconhento: "+ omiranha.getPeconhento());
+		System.out.println("Cor: "+ omiranha.getCor());
+		System.out.println("Pais: "+ omiranha.getRegiao().getPais());
+		System.out.println("Estado: "+ omiranha.getRegiao().getEstado());
+
+
 	}
 }

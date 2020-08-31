@@ -5,6 +5,12 @@ public class Regiao
     private String pais;
     private String estado;
 
+    public Regiao()
+    {
+        pais = "";
+        estados = "";
+    }
+    
     public String getPais()
     {
         return pais;
