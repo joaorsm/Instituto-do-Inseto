@@ -22,6 +22,6 @@ public class Run
 		System.out.println("Peconhento: "+ aracnideo.getPeconhento());
 		System.out.println("Cor: "+ aracnideo.getCor());
 		System.out.println("Pais: "+ aracnideo.getRegiao().getPais());
-		System.out.println("Estadp: "+ aracnideo.getRegiao().getEstado());
+		System.out.println("Estado: "+ aracnideo.getRegiao().getEstado());
 	}
 }
