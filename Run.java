@@ -7,6 +7,9 @@ public class Run
 		Leitura leitura = new Leitura();
 		//Aracnideos aracnideo =  new Aracnideos();
 		Aranha omiranha =  new Aranha();
+		Escorpiao escorpiao = new Escorpiao();
+
+		System.out.println("\nARANHA\n");
 
 		omiranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Entre com a quantidade de olhos: ")));
 
@@ -31,13 +34,20 @@ public class Run
 		omiranha.seda(omiranha.getTeia());
 
 		omiranha.peconhento(omiranha.getPeconhento());
-		
+
+		System.out.println("\nEscorpiao\n");
+		escorpiao.setFerrao(Boolean.parseBoolean(leitura.entDados("Tem ferrao? (true or false):")));
+
+		System.out.println("\nARANHA\n");
+
 		System.out.println("\nPernas: "+ omiranha.getPernas());
 		System.out.println("Olhos: "+ omiranha.getQuantidadeOlhos());
 		//System.out.println("Peconhento: "+ omiranha.getPeconhento());
 		System.out.println("Cor: "+ omiranha.getCor());
 		System.out.println("Pais: "+ omiranha.getRegiao().getPais());
 		System.out.println("Estado: "+ omiranha.getRegiao().getEstado());
+		System.out.println("\nESCORPIAO\n");
+		System.out.println("Ferrao: "+ escorpiao.getFerrao());
 
 
 	}

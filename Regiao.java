@@ -8,7 +8,7 @@ public class Regiao
     public Regiao()
     {
         pais = "";
-        estados = "";
+        estado = "";
     }
     
     public String getPais()
