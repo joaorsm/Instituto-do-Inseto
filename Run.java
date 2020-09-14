@@ -136,6 +136,8 @@ public class Run
 			System.out.println("Ja perdeu o ferrao");
 		}
 
+		escorpiao.informativo();
+
 		escorpiao.cacar();
 
 

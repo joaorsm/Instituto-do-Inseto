@@ -1,6 +1,6 @@
 //João Roberto Savini Merante RA 1886525
 
-public class Escorpiao extends Aracnideos
+public class Escorpiao extends Aracnideos implements InfoFerrao
 {
     private Boolean ferrao;
 
@@ -27,6 +27,13 @@ public class Escorpiao extends Aracnideos
 
     public void cacar()
     {
-        System.out.println("Escorpião espera a presa escondido");
+        System.out.println("Escorpiao espera a presa escondido");
+    }
+
+    // ===================== implemento interface ==============================
+
+    public void informativo()
+    {
+        System.out.println("Escorpioes perdem o ferrao quando ameacados a fim de sobreviver ate o acasalamento");
     }
 }
