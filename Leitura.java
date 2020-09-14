@@ -11,7 +11,9 @@ public class Leitura
 		System.out.println(rotulo);
 		InputStreamReader teclado = new InputStreamReader(System.in);
 		BufferedReader buffer = new BufferedReader(teclado);
+
 		String string = "";
+		
 		try
 		{
 			string = buffer.readLine();

@@ -4,16 +4,30 @@ public class Run
 {
 	public static void main(String[] args)
 	{
+		//====================================== instancias =====================================================
+
 		Leitura leitura = new Leitura();
-		//Aracnideos aracnideo =  new Aracnideos();
+		//Aracnideos aracnideo1 =  new Aracnideos();      // Coerção
+		//Aracnideos aracnideo2 =  new Aranha();          // Coerção
 		Aranha omiranha =  new Aranha();
 		Escorpiao escorpiao = new Escorpiao();
 
-		System.out.println("\nARANHA\n");
+		// ===================================== coerção ===================================================
+
+		/*
+		aracnideo1.peconhento();
+		aracnideo2.peconhento();
+		*/
+
+		// ===================================== entradas aranha =====================================================
+		
+		System.out.println("\nAranha\n");
 
 		omiranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Entre com a quantidade de olhos: ")));
 
 		omiranha.setPeconhento(Boolean.parseBoolean(leitura.entDados("Peconhento? (true or false): ")));
+
+		omiranha.setEspecie(leitura.entDados("Entre com a especie: "));
 
 		omiranha.setCor(leitura.entDados("Entre com a cor: "));
 
@@ -26,29 +40,89 @@ public class Run
 		if(omiranha.getPeconhento())
 		{
 			omiranha.setVeneno(leitura.entDados("Nome do veneno: "));
+			System.out.println();
 			omiranha.peconhento(omiranha.getVeneno());
 		}
 		
 		omiranha.seda();
+		omiranha.cacar();
 
 		omiranha.seda(omiranha.getTeia());
 
 		omiranha.peconhento(omiranha.getPeconhento());
 
+		try
+		{
+			omiranha.setSubOrdem(leitura.entDados("\nInforme a sub ordem: "));
+			System.out.println("\nSub Ordem..: "+omiranha.getSubOrdem());
+		}
+		catch(SubOrdemException soe){
+			soe.avisoSubOrdem(omiranha);
+		}
+
+
+		// =================================== entradas escorpiao =============================================
+
 		System.out.println("\nEscorpiao\n");
-		escorpiao.setFerrao(Boolean.parseBoolean(leitura.entDados("Tem ferrao? (true or false):")));
 
-		System.out.println("\nARANHA\n");
+		escorpiao.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Entre com a quantidade de olhos: ")));
 
-		System.out.println("\nPernas: "+ omiranha.getPernas());
+		escorpiao.setPeconhento(Boolean.parseBoolean(leitura.entDados("Eh peconhento? <true or false>: ")));
+
+		escorpiao.setEspecie(leitura.entDados("Entre com a especie: "));
+
+		escorpiao.setCor(leitura.entDados("Entre com a cor: "));
+
+		escorpiao.getRegiao().setPais(leitura.entDados("De entrada no pais de origem: "));
+
+		escorpiao.getRegiao().setEstado(leitura.entDados("De entrada no estado de origem: "));
+
+		escorpiao.setFerrao(Boolean.parseBoolean(leitura.entDados("Ainda tem ferrao? (true or false): ")));
+
+
+		// ================================ impressão dos dados coletados ==============================
+
+		System.out.println("\n====================== ARANHA ======================\n");
+
+		System.out.println("Pernas: "+ omiranha.getPernas());
 		System.out.println("Olhos: "+ omiranha.getQuantidadeOlhos());
 		//System.out.println("Peconhento: "+ omiranha.getPeconhento());
 		System.out.println("Cor: "+ omiranha.getCor());
 		System.out.println("Pais: "+ omiranha.getRegiao().getPais());
 		System.out.println("Estado: "+ omiranha.getRegiao().getEstado());
-		System.out.println("\nESCORPIAO\n");
-		System.out.println("Ferrao: "+ escorpiao.getFerrao());
+
+		System.out.println();
+
+		System.out.println("\n====================== ESCORPIAO ======================\n");
+
+		System.out.println("Pernas: "+ escorpiao.getPernas());
+		System.out.println("Olhos: "+ escorpiao.getQuantidadeOlhos());
+		//System.out.println("Peconhento: "+ escorpiao.getPeconhento());
+		System.out.println("Cor: "+ escorpiao.getCor());
+		System.out.println("Pais: "+ escorpiao.getRegiao().getPais());
+		System.out.println("Estado: "+ escorpiao.getRegiao().getEstado());
+
+		if(escorpiao.getFerrao())
+		{
+			System.out.println("Possui ferrao!");
+			escorpiao.alerta();
+		}else
+		{
+			System.out.println("Ja perdeu o ferrao");
+		}
+
+		escorpiao.cacar();
 
 
+		// ======================= testando exception ============================
+
+		/*try
+		{
+			omiranha.setSubOrdem(leitura.entDados("\nInforme a sub ordem: "));
+			System.out.println("\nSub Ordem..: "+omiranha.getSubOrdem());
+		}
+		catch(SubOrdemException soe){
+			soe.avisoSubOrdem(omiranha);
+		}*/
 	}
 }

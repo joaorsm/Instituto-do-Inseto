@@ -4,14 +4,29 @@ public class Escorpiao extends Aracnideos
 {
     private Boolean ferrao;
 
-    public Escorpiao(){
+    public Escorpiao()
+    {
         ferrao = true;
     }
 
-    public void setFerrao(Boolean ferrao){
+    public void setFerrao(Boolean ferrao)
+    {
         this.ferrao = ferrao;
     }
-    public Boolean getFerrao(){
+    public Boolean getFerrao()
+    {
         return ferrao; 
+    }
+
+    public void alerta()
+    {
+        System.out.println("Cuidado para nao ser ferroado!");
+    }
+
+    // ======================== metodo abstrato na classe mae =========================
+
+    public void cacar()
+    {
+        System.out.println("Escorpião espera a presa escondido");
     }
 }

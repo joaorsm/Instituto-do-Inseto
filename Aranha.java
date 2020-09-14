@@ -3,14 +3,12 @@
 public class Aranha extends Aracnideos
 {
 	private Boolean teia;
-	private String especie;
 	private String subOrdem;
 	private String veneno;
 
 	public Aranha()
 	{
 		teia = true;
-		especie = "";
 		subOrdem = "";
 		veneno = "";
 	}
@@ -26,23 +24,14 @@ public class Aranha extends Aracnideos
 		this.teia = teia;
 	}
 
-	public String getEspecie()
-	{
-		return especie;
-	}
-	public void setEspecie(String especie)
-	{
-		this.especie = especie;
-	}
-
-	public String getSubOrdem()
+	/*public String getSubOrdem()
 	{
 		return subOrdem;
 	}
 	public void setSubOrdem(String subOrdem)
 	{
 		this.subOrdem = subOrdem;
-	}
+	}*/
 
 	public String getVeneno()
 	{
@@ -53,12 +42,26 @@ public class Aranha extends Aracnideos
 		this.veneno = veneno;
 	}
 
-	// metodos
+	// ===================== metodo abstrato na classe mãe ==========================
+
+	public void cacar()
+	{
+		if (teia)
+		{
+			System.out.println("Aranha espera a presa se embolar na teia");
+		}else
+		{
+			System.out.println("Aranha caca de outras formas...");
+		}
+	}
+
+	// ================================== sobrecarga ===================================
 
 	public void seda()
 	{
-		System.out.println("\nProduz seda para outros fins");
+		System.out.println("\nProduz seda para qualquer fim");
 	}
+
 	public void seda(Boolean teia)
 	{
 		if(teia)
@@ -85,5 +88,32 @@ public class Aranha extends Aracnideos
 	{
 
 		System.out.println("O nome do veneno eh: "+veneno);
+	}
+
+	// ================================ sobrescrita e coerção ==============================
+	
+	public void peconhento()
+	{
+		System.out.println("Aranha peconhento!!!");
+	}
+
+	// ================================ exception ========================================
+
+	public String getSubOrdem()
+	{
+		return subOrdem;
+	}
+	public void setSubOrdem(String subOrdem) throws SubOrdemException
+	{
+		if(subOrdem.equalsIgnoreCase("Mesothelae")) //Mesothelae Opisthothelae
+		{
+			this.subOrdem = subOrdem;
+		}else if(subOrdem.equalsIgnoreCase("Opisthothelae"))
+		{
+			this.subOrdem = subOrdem;
+		}else
+		{
+			throw new SubOrdemException();
+		}	
 	}
 }
