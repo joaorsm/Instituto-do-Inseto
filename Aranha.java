@@ -13,7 +13,7 @@ public class Aranha extends Aracnideos
 		veneno = "";
 	}
 
-	//metodos get/set
+	// ============================== metodos get/set ==============================
 
 	public Boolean getTeia()
 	{
@@ -23,15 +23,6 @@ public class Aranha extends Aracnideos
 	{
 		this.teia = teia;
 	}
-
-	/*public String getSubOrdem()
-	{
-		return subOrdem;
-	}
-	public void setSubOrdem(String subOrdem)
-	{
-		this.subOrdem = subOrdem;
-	}*/
 
 	public String getVeneno()
 	{

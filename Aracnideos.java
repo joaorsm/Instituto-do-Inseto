@@ -20,27 +20,35 @@ public abstract class Aracnideos
 
 	// ========================== metodo final =====================================
 
-	public final int getPernas()
+	final public int getPernas()
 	{
 		return pernas;
 	}
 
-	public final void setPernas(int pernas)
+	final public void setPernas(int pernas)
 	{
 		this.pernas = pernas;
 	}
 
-	// =========================== metodos ====================================
+	// ========================== metodos interface e exception ============================
 
 	public int getQuantidadeOlhos()
 	{
 		return quantidadeOlhos;
 	}
 
-	public void setQuantidadeOlhos(int quantidadeOlhos)
+	public void setQuantidadeOlhos(int quantidadeOlhos) throws OlhosException
 	{
-		this.quantidadeOlhos = quantidadeOlhos;
+		if((quantidadeOlhos % 2) == 0)
+		{
+			this.quantidadeOlhos = quantidadeOlhos;
+		}else
+		{
+			throw new OlhosException();
+		}	
 	}
+
+	// =========================== metodos ====================================
 
 	public boolean getPeconhento()
 	{

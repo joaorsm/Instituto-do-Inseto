@@ -1,3 +1,5 @@
+//João Roberto Savini Merante RA 1886525
+
 public class SubOrdemException extends Exception
 {
 	Leitura leitura = new Leitura();
@@ -17,6 +19,5 @@ public class SubOrdemException extends Exception
 		}
 
 		return aranha;
-		//System.out.println("");
 	}
 }
