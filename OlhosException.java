@@ -20,7 +20,7 @@ public class OlhosException extends Exception
 		catch(NumberFormatException nfe)
 		{
 			System.out.println("Quantidade de olhos deve ser um numero do tipo Inteiro.");
-			avisoOlhos(aracnideo);
+			this.avisoOlhos(aracnideo);
 		}
 
 		return aracnideo;

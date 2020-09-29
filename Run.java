@@ -21,6 +21,36 @@ public class Run
 
 		// ===================================== entradas aranha =====================================================
 		
+		boolean continueMenu = true;
+		int opcaoMenu = 0;
+		MenuAranha menuaranha = new MenuAranha();
+
+		while(continueMenu)
+		{
+			System.out.println("\n =================== MENU CADASTRO ARACNIDEO ===================\n");
+			System.out.println("\t (1) CADASTRAR ARANHA");
+			System.out.println("\t (2) CADASTRAR ESCORPIAO");
+			System.out.println("\t (3) SAIR");
+
+			try{
+				opcaoMenu = Integer.parseInt(leitura.entDados("\nEscolha uma opcao: "));
+			}
+			catch(NumberFormatException nfe){
+				leitura.entDados("\nA opcao deve ser um numero inteiro - Press <Enter>");
+				continue;
+			} 
+			break;
+		}
+
+		switch(opcaoMenu)
+		{
+			case 1:
+				menuaranha.criarMenuAranha();
+				break;
+		}
+		
+		
+		/*
 		System.out.println("\n ============= Coletando dados de Aranha =============\n");
 
 		//omiranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Entre com a quantidade de olhos: ")));
@@ -88,6 +118,10 @@ public class Run
 		{
 			oe.avisoOlhos(omiranha);
 		}
+		catch(NumberFormatException nfe)
+		{
+			System.out.println("Quantidade de olhos deve ser um numero do tipo Inteiro.");
+		}
 
 		escorpiao.setPeconhento(Boolean.parseBoolean(leitura.entDados("Eh peconhento? <true or false>: ")));
 
@@ -100,6 +134,7 @@ public class Run
 		escorpiao.getRegiao().setEstado(leitura.entDados("De entrada no estado de origem: "));
 
 		escorpiao.setFerrao(Boolean.parseBoolean(leitura.entDados("Ainda tem ferrao? (true or false): ")));
+		
 
 
 		// ================================ impressão dos dados coletados ==============================
@@ -139,6 +174,7 @@ public class Run
 		escorpiao.informativo();
 
 		escorpiao.cacar();
+		*/
 
 
 		// ======================= testando exception ============================
