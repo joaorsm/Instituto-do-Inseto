@@ -36,7 +36,7 @@ public class BancoAranha
             try
 		    {
 			    aranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos: BANCO ARANHA")));
-                System.out.println("\n A quantidade de olhos eh: "+aranha.getQuantidadeOlhos());
+                //System.out.println("\nA quantidade de olhos eh: "+aranha.getQuantidadeOlhos());
                 continueMenuBancoAranha = false;
 		    }
 		    catch(OlhosException oe)
@@ -67,16 +67,16 @@ public class BancoAranha
         if(aranha.getPeconhento())
 		{
 			aranha.setVeneno(leitura.entDados("Nome do veneno: "));
-			System.out.println();
-			aranha.peconhento(aranha.getVeneno());
+			//System.out.println();
+			//aranha.peconhento(aranha.getVeneno());
 		}
 		
-		aranha.seda();
-		aranha.cacar();
+		//aranha.seda();
+		//aranha.cacar();
 
-		aranha.seda(aranha.getTeia());
+		//aranha.seda(aranha.getTeia());
 
-		aranha.peconhento(aranha.getPeconhento());
+		//aranha.peconhento(aranha.getPeconhento());
 
 		try
 		{
@@ -101,13 +101,25 @@ public class BancoAranha
 		System.out.println("Especie: "+aranha.getEspecie());
 		System.out.println("Cor: "+ aranha.getCor());
 		System.out.println("Pais: "+ aranha.getRegiao().getPais());
-		System.out.println("Estado: "+ aranha.getRegiao().getEstado());
+        System.out.println("Estado: "+ aranha.getRegiao().getEstado());
+        if (aranha.getTeia())
+        {
+            aranha.seda(aranha.getTeia());
+        }else
+        {
+            aranha.seda(aranha.getTeia());
+            aranha.seda();
+        }
+        aranha.cacar();
+        aranha.peconhento(aranha.getPeconhento());
+        aranha.peconhento(aranha.getVeneno());
     }
 
     public Aranha excluirAranha(Aranha aranha){
 
         aranha = consultaAranhaCodigo(aranha);
-        if (bdAranha.remove(aranha)) {
+        if (bdAranha.remove(aranha)) 
+        {
             return aranha;
         }
         return null;

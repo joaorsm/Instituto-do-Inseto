@@ -50,17 +50,17 @@ public class Aranha extends Aracnideos
 
 	public void seda()
 	{
-		System.out.println("\nProduz seda para qualquer fim");
+		System.out.println("Produz seda para qualquer fim");
 	}
 
 	public void seda(Boolean teia)
 	{
 		if(teia)
 		{
-			System.out.println("Produz teia");
+			System.out.println("Finalidade da seda: Produz teia");
 		}else
 		{
-			System.out.println("Nao produz teia");
+			System.out.println("Finalidade da seda: Nao produz teia");
 		}
 	}
 
