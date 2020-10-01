@@ -2,6 +2,7 @@
 
 public class Run
 {
+	private static MenuAranha menuaranha = new MenuAranha();
 	public static void main(String[] args)
 	{
 		//====================================== instancias =====================================================
@@ -9,8 +10,8 @@ public class Run
 		Leitura leitura = new Leitura();
 		//Aracnideos aracnideo1 =  new Aracnideos();      // Coerção
 		//Aracnideos aracnideo2 =  new Aranha();          // Coerção
-		Aranha omiranha =  new Aranha();
-		Escorpiao escorpiao = new Escorpiao();
+		//Aranha omiranha =  new Aranha();
+		//Escorpiao escorpiao = new Escorpiao();
 
 		// ===================================== coerção ===================================================
 
@@ -21,33 +22,46 @@ public class Run
 
 		// ===================================== entradas aranha =====================================================
 		
-		boolean continueMenu = true;
-		int opcaoMenu = 0;
-		MenuAranha menuaranha = new MenuAranha();
+		boolean continueMenuPrincipal = true;
+		int opcaoMenuPrincipal = 0;
+		//boolean count = false;
+		//MenuAranha menuaranha = new MenuAranha();
 
-		while(continueMenu)
+		while(continueMenuPrincipal)
 		{
+			//MenuAranha menuaranha = new MenuAranha();
 			System.out.println("\n =================== MENU CADASTRO ARACNIDEO ===================\n");
 			System.out.println("\t (1) CADASTRAR ARANHA");
 			System.out.println("\t (2) CADASTRAR ESCORPIAO");
-			System.out.println("\t (3) SAIR");
+			System.out.println("\n\t (9) SAIR");
 
-			try{
-				opcaoMenu = Integer.parseInt(leitura.entDados("\nEscolha uma opcao: "));
+			try
+			{
+				opcaoMenuPrincipal = Integer.parseInt(leitura.entDados("\nEscolha uma opcao: "));
 			}
-			catch(NumberFormatException nfe){
+			catch(NumberFormatException nfe)
+			{
 				leitura.entDados("\nA opcao deve ser um numero inteiro - Press <Enter>");
 				continue;
-			} 
-			break;
+			}
+
+			switch(opcaoMenuPrincipal)
+			{
+				case 1:
+					menuaranha.criarMenuAranha();
+					break;
+				
+				case 9:
+					continueMenuPrincipal = false;
+					break;
+
+                default:
+					System.out.println("Escolha uma opcao...");
+					break;	
+			}
 		}
 
-		switch(opcaoMenu)
-		{
-			case 1:
-				menuaranha.criarMenuAranha();
-				break;
-		}
+		
 		
 		
 		/*

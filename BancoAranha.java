@@ -6,25 +6,38 @@ import java.util.List;
 public class BancoAranha
 {
     private List<Aranha> bdAranha = new ArrayList<Aranha>();
-    private Aranha aranha = new Aranha();
     private Leitura leitura = new Leitura();
+    private Aranha aranha = new Aranha();
 
     public List<Aranha> getBdAranha()
     {
         return bdAranha;
     }
 
-    public Aranha cadastrarAranha(Aranha aranha)
+    public Aranha consultaAranhaCodigo(Aranha aranha)
     {
-        boolean continueMenu = true;
+        for (int i = 0; i < bdAranha.size(); i++) {
+            if(bdAranha.get(i).getId() == aranha.getId())
+            {
+                return bdAranha.get(i);
+            }
+        }
+        return null;
+    }
 
-        while(continueMenu)
+    public Aranha cadastrarAranha(Aranha aranha, int count)
+    {
+        boolean continueMenuBancoAranha = true;
+
+        aranha.setId(count);
+
+        while(continueMenuBancoAranha)
         {
             try
 		    {
-			    aranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos: ")));
+			    aranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos: BANCO ARANHA")));
                 System.out.println("\n A quantidade de olhos eh: "+aranha.getQuantidadeOlhos());
-                continueMenu = false;
+                continueMenuBancoAranha = false;
 		    }
 		    catch(OlhosException oe)
 		    {
@@ -33,13 +46,70 @@ public class BancoAranha
 		    catch(NumberFormatException nfe)
 		    {
                 System.out.println("Quantidade de olhos deve ser um numero do tipo Inteiro.");
+                OlhosException oe = new OlhosException();
+                oe.avisoOlhos(aranha);
             }
-            
-            
+            continueMenuBancoAranha = false;  
         }
 
         aranha.setPeconhento(Boolean.parseBoolean(leitura.entDados("Peconhento? (true or false): ")));
 
+        aranha.setEspecie(leitura.entDados("Entre com a especie: "));
+
+        aranha.setCor(leitura.entDados("Entre com a cor: "));
+
+		aranha.getRegiao().setPais(leitura.entDados("Entre com o pais de origem: "));
+
+        aranha.getRegiao().setEstado(leitura.entDados("Entre com o estado de origem: "));
+
+        aranha.setTeia(Boolean.parseBoolean(leitura.entDados("Produz teia? (true or false): ")));
+        
+        if(aranha.getPeconhento())
+		{
+			aranha.setVeneno(leitura.entDados("Nome do veneno: "));
+			System.out.println();
+			aranha.peconhento(aranha.getVeneno());
+		}
+		
+		aranha.seda();
+		aranha.cacar();
+
+		aranha.seda(aranha.getTeia());
+
+		aranha.peconhento(aranha.getPeconhento());
+
+		try
+		{
+			aranha.setSubOrdem(leitura.entDados("\nInforme a sub ordem: "));
+			System.out.println("\nSub Ordem..: "+aranha.getSubOrdem());
+		}
+		catch(SubOrdemException soe){
+			soe.avisoSubOrdem(aranha);
+		}
+
+
         return aranha;
+    }
+
+    public void imprimirAranha(Aranha aranha)
+    {
+        System.out.println();
+        System.out.println("ID: "+ aranha.getId());
+        System.out.println("Pernas: "+ aranha.getPernas());
+		System.out.println("Olhos: "+ aranha.getQuantidadeOlhos());
+		//System.out.println("Peconhento: "+ aranha.getPeconhento());
+		System.out.println("Especie: "+aranha.getEspecie());
+		System.out.println("Cor: "+ aranha.getCor());
+		System.out.println("Pais: "+ aranha.getRegiao().getPais());
+		System.out.println("Estado: "+ aranha.getRegiao().getEstado());
+    }
+
+    public Aranha excluirAranha(Aranha aranha){
+
+        aranha = consultaAranhaCodigo(aranha);
+        if (bdAranha.remove(aranha)) {
+            return aranha;
+        }
+        return null;
     }
 }

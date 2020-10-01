@@ -2,6 +2,7 @@
 
 public abstract class Aracnideos
 {
+	private int id;
 	private int pernas;
 	private int quantidadeOlhos;
 	private boolean peconhento;
@@ -11,6 +12,7 @@ public abstract class Aracnideos
 
 	public Aracnideos()
 	{
+		id = 0;
 		pernas = 8;
 		quantidadeOlhos = 0;
 		peconhento = true;
@@ -49,6 +51,16 @@ public abstract class Aracnideos
 	}
 
 	// =========================== metodos ====================================
+
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
 
 	public boolean getPeconhento()
 	{
