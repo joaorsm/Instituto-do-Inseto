@@ -77,6 +77,57 @@ public class BancoAranha
         return aranha;
     }
 
+    public Aranha cadastrarAranha(Aranha aranha)
+    {
+        boolean continueMenuBancoAranha = true;
+
+        while(continueMenuBancoAranha)
+        {
+            try
+		    {
+			    aranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos:")));
+                continueMenuBancoAranha = false;
+		    }
+		    catch(OlhosException oe)
+		    {
+                oe.avisoOlhos(aranha);
+		    }
+		    catch(NumberFormatException nfe)
+		    {
+                System.out.println("Quantidade de olhos deve ser um numero do tipo Inteiro.");
+                OlhosException oe = new OlhosException();
+                oe.avisoOlhos(aranha);
+            }
+            continueMenuBancoAranha = false;  
+        }
+
+        aranha.setPeconhento(Boolean.parseBoolean(leitura.entDados("Peconhento? (true or false): ")));
+
+        aranha.setEspecie(leitura.entDados("Entre com a especie: "));
+
+        aranha.setCor(leitura.entDados("Entre com a cor: "));
+
+		aranha.getRegiao().setPais(leitura.entDados("Entre com o pais de origem: "));
+
+        aranha.getRegiao().setEstado(leitura.entDados("Entre com o estado de origem: "));
+
+        aranha.setTeia(Boolean.parseBoolean(leitura.entDados("Produz teia? (true or false): ")));
+        
+        if(aranha.getPeconhento())
+		{
+			aranha.setVeneno(leitura.entDados("Nome do veneno: "));
+		}
+
+		try
+		{
+			aranha.setSubOrdem(leitura.entDados("Informe a sub ordem: "));
+		}
+		catch(SubOrdemException soe){
+			soe.avisoSubOrdem(aranha);
+		}
+        return aranha;
+    }
+
     public void imprimirAranha(Aranha aranha)
     {
         System.out.println();
@@ -102,6 +153,19 @@ public class BancoAranha
         {
             aranha.peconhento(aranha.getVeneno());
         }
+    }
+
+    public Aranha alterarAranha(Aranha aranha)
+    {
+        for (int i = 0; i < bdAranha.size(); i++) {
+            if (bdAranha.get(i).getId() == aranha.getId())
+            {
+                aranha = cadastrarAranha(aranha);
+                bdAranha.set(i, aranha);
+                return bdAranha.get(i);
+            }
+        }
+        return null;
     }
 
     public Aranha excluirAranha(Aranha aranha){

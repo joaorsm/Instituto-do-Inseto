@@ -65,6 +65,45 @@ public class BancoEscorpiao
         return escorpiao;
     }
 
+    public Escorpiao cadastrarEscorpiao(Escorpiao escorpiao)
+    {
+        boolean continueMenuBancoEscorpiao = true;
+
+        while(continueMenuBancoEscorpiao)
+        {
+            try
+		    {
+			    escorpiao.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos:")));
+                continueMenuBancoEscorpiao = false;
+		    }
+		    catch(OlhosException oe)
+		    {
+                oe.avisoOlhos(escorpiao);
+		    }
+		    catch(NumberFormatException nfe)
+		    {
+                System.out.println("Quantidade de olhos deve ser um numero do tipo Inteiro.");
+                OlhosException oe = new OlhosException();
+                oe.avisoOlhos(escorpiao);
+            }
+            continueMenuBancoEscorpiao = false;  
+        }
+
+        escorpiao.setPeconhento(Boolean.parseBoolean(leitura.entDados("Peconhento? (true or false): ")));
+
+        escorpiao.setEspecie(leitura.entDados("Entre com a especie: "));
+
+        escorpiao.setCor(leitura.entDados("Entre com a cor: "));
+
+		escorpiao.getRegiao().setPais(leitura.entDados("Entre com o pais de origem: "));
+
+        escorpiao.getRegiao().setEstado(leitura.entDados("Entre com o estado de origem: "));
+
+        escorpiao.setFerrao(Boolean.parseBoolean(leitura.entDados("Ainda tem ferrao? (true or false): ")));
+
+        return escorpiao;
+    }
+
     public void imprimirEscorpiao(Escorpiao escorpiao)
     {
         System.out.println();
@@ -93,6 +132,19 @@ public class BancoEscorpiao
 		}
 
 		escorpiao.informativo();
+    }
+
+    public Escorpiao alterarEscorpiao(Escorpiao escorpiao)
+    {
+        for (int i = 0; i < bdEscorpiao.size(); i++) {
+            if (bdEscorpiao.get(i).getId() == escorpiao.getId())
+            {
+                escorpiao = cadastrarEscorpiao(escorpiao);
+                bdEscorpiao.set(i, escorpiao);
+                return bdEscorpiao.get(i);
+            }
+        }
+        return null;
     }
 
     public Escorpiao excluirEscorpiao(Escorpiao escorpiao){

@@ -17,14 +17,16 @@ public class MenuEscorpiao {
             System.out.println("\n ============== MENU DE ESCORPIOES ==============");
             System.out.println("\n\t (1) INSERIR");
             System.out.println("\t (2) IMPRIMIR ESCORPIOES REGISTRADOS");
-            System.out.println("\t (3) EXCLUIR ESCORPIAO");
+            System.out.println("\t (3) CONSULTAR ESCORPIAO PELO ID");
+            System.out.println("\t (4) ALTERAR INFORMACOES DE ESCORPIAO PELO ID");
+            System.out.println("\t (5) EXCLUIR ESCORPIAO PELO ID");
             System.out.println("\n\t (9) VOLTAR PARA O MENU ANTERIOR");
 
             try {
                 opcaoMenuEscorpiao = Integer.parseInt(leitura.entDados("\nEscolha uma opcao: "));
             }
             catch (NumberFormatException nfe) {
-                leitura.entDados("\nA opcao deve ser um numero inteiro - Press <Enter>");
+                leitura.entDados("\nA opcao deve ser um numero inteiro");
                 continue;
             }
 
@@ -44,13 +46,40 @@ public class MenuEscorpiao {
 
                 case 3:
                     escorpiao = new Escorpiao();
+                    escorpiao.setId(Integer.parseInt(leitura.entDados("Digite o ID que deseja consultar:")));
+                    escorpiao = bancoEscorpiao.consultaEscorpiaoCodigo(escorpiao);
+                    if(escorpiao == null)
+                    {
+                        System.out.println("ID nao registrado no banco de dados");
+                    }else
+                    {
+                        bancoEscorpiao.imprimirEscorpiao(escorpiao);
+                    }
+                    break;
+
+                case 4:
+                    escorpiao = new Escorpiao();
+                    escorpiao.setId(Integer.parseInt(leitura.entDados("Digite o ID que deseja alterar:")));
+                    escorpiao = bancoEscorpiao.alterarEscorpiao(escorpiao);
+                    if (escorpiao != null)
+                    {
+                        System.out.println("Registro alterado com sucesso!");
+                        bancoEscorpiao.imprimirEscorpiao(escorpiao);                        
+                    } else
+                    {
+                        System.out.println("ID nao registrado no BD..");                    
+                    }
+                    break;
+
+                case 5:
+                    escorpiao = new Escorpiao();
                     try
                     {
-                        escorpiao.setId(Integer.parseInt(leitura.entDados("Digite o codigo da escorpiao que deseja excluir:")));
+                        escorpiao.setId(Integer.parseInt(leitura.entDados("Digite o ID do escorpiao que deseja excluir:")));
                     }
                     catch(NumberFormatException nfe)
                     {
-                        leitura.entDados("Codigo deve ser um valor inteiro");
+                        leitura.entDados("ID deve ser um valor inteiro");
                         
                     }
 
@@ -59,7 +88,7 @@ public class MenuEscorpiao {
                     if (escorpiao != null) {
                         System.out.println("Exclusao realizada com sucesso");
                     } else {
-                        System.out.println("Nenhum escorpiao registrado com este codigo");
+                        System.out.println("Nenhum escorpiao registrado com este ID");
                     }
                     break;
 

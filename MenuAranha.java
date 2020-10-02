@@ -17,14 +17,16 @@ public class MenuAranha
             System.out.println("\n ============== MENU DE ARANHAS ==============");
             System.out.println("\n\t (1) INSERIR");
             System.out.println("\t (2) IMPRIMIR ARANHAS REGISTRADAS");
-            System.out.println("\t (3) EXCLUIR ARANHA");
+            System.out.println("\t (3) CONSULTAR ARANHA PELO ID");
+            System.out.println("\t (4) ALTERAR INFORMACOES DE ARANHA PELO ID");
+            System.out.println("\t (5) EXCLUIR ARANHA PELO ID");
             System.out.println("\n\t (9) VOLTAR PARA O MENU ANTERIOR");
 
             try {
                 opcaoMenuAranha = Integer.parseInt(leitura.entDados("\nEscolha uma opcao: "));
             }
             catch (NumberFormatException nfe) {
-                leitura.entDados("\nA opcao deve ser um numero inteiro - Press <Enter>");
+                leitura.entDados("\nA opcao deve ser um numero inteiro");
                 continue;
             }
 
@@ -44,14 +46,41 @@ public class MenuAranha
 
                 case 3:
                     aranha = new Aranha();
+                    aranha.setId(Integer.parseInt(leitura.entDados("Digite o ID que deseja consultar:")));
+                    aranha = bancoAranha.consultaAranhaCodigo(aranha);
+                    if(aranha == null)
+                    {
+                        System.out.println("ID nao registrado no banco de dados");
+                    }else
+                    {
+                        bancoAranha.imprimirAranha(aranha);
+                    }
+                    break;
+
+                case 4:
+                    aranha = new Aranha();
+                    aranha.setId(Integer.parseInt(leitura.entDados("Digite o ID que deseja alterar:")));
+                    aranha = bancoAranha.alterarAranha(aranha);
+                    if (aranha != null)
+                    {
+                        System.out.println("Registro alterado com sucesso!");
+                        bancoAranha.imprimirAranha(aranha);                        
+                    } else
+                    {
+                        System.out.println("ID nao registrado no BD..");                    
+                    }
+                    break;
+
+                case 5:
+                    aranha = new Aranha();
                     try
                     {
-                        aranha.setId(Integer.parseInt(leitura.entDados("Digite o codigo da aranha que deseja excluir:")));
+                        aranha.setId(Integer.parseInt(leitura.entDados("Digite o ID da aranha que deseja excluir:")));
 
                     }
                     catch(NumberFormatException nfe)
                     {
-                        leitura.entDados("Codigo deve ser um valor inteiro");
+                        leitura.entDados("ID deve ser um valor inteiro");
                     }
 
                     aranha = bancoAranha.excluirAranha(aranha);
@@ -59,7 +88,7 @@ public class MenuAranha
                     if (aranha != null) {
                         System.out.println("Exclusao realizada com sucesso");
                     } else {
-                        System.out.println("Nenhuma aranha registrada com este codigo");
+                        System.out.println("Nenhuma aranha registrada com este ID");
                     }
                     break;
 
