@@ -11,7 +11,6 @@ public class SubOrdemException extends Exception
 		try
 		{
 			aranha.setSubOrdem(leitura.entDados("\nInforme novamente a sub ordem: "));
-			System.out.println("\nSub Ordem..: "+aranha.getSubOrdem());
 		}
 		catch(SubOrdemException soe)
 		{

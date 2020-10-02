@@ -7,7 +7,6 @@ public class BancoEscorpiao
 {
     private List<Escorpiao> bdEscorpiao = new ArrayList<Escorpiao>();
     private Leitura leitura = new Leitura();
-    private Escorpiao escorpiao = new Escorpiao();
 
     public List<Escorpiao> getBdEscorpiao()
     {

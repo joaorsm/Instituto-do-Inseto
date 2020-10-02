@@ -1,13 +1,11 @@
 //João Roberto Savini Merante RA 1886525
 
-public class MenuAranha {
+public class MenuAranha
+{
     private BancoAranha bancoAranha = new BancoAranha();
     private Leitura leitura = new Leitura();
     private Aranha aranha = new Aranha();
-    //private boolean continueMenuAranha = true;
     private int count = 0;
-    //private int opcaoMenuAranha = 0;
-
 
 
     public void criarMenuAranha()
@@ -16,7 +14,7 @@ public class MenuAranha {
         boolean continueMenuAranha = true;
         while (continueMenuAranha)
         {
-            System.out.println("\n ============== CADASTRO DE ARANHA ==============");
+            System.out.println("\n ============== MENU DE ARANHAS ==============");
             System.out.println("\n\t (1) INSERIR");
             System.out.println("\t (2) IMPRIMIR ARANHAS REGISTRADAS");
             System.out.println("\t (3) EXCLUIR ARANHA");
@@ -54,7 +52,6 @@ public class MenuAranha {
                     catch(NumberFormatException nfe)
                     {
                         leitura.entDados("Codigo deve ser um valor inteiro");
-                        
                     }
 
                     aranha = bancoAranha.excluirAranha(aranha);
@@ -64,9 +61,7 @@ public class MenuAranha {
                     } else {
                         System.out.println("Nenhuma aranha registrada com este codigo");
                     }
-
                     break;
-
 
                 case 9:
                     continueMenuAranha = false;

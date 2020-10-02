@@ -1,13 +1,11 @@
 //João Roberto Savini Merante RA 1886525
 
 public class MenuEscorpiao {
+
     private BancoEscorpiao bancoEscorpiao = new BancoEscorpiao();
     private Leitura leitura = new Leitura();
     private Escorpiao escorpiao = new Escorpiao();
-    //private boolean continueMenuAranha = true;
     private int count = 0;
-    //private int opcaoMenuAranha = 0;
-
 
 
     public void criarMenuEscorpiao()
@@ -16,7 +14,7 @@ public class MenuEscorpiao {
         boolean continueMenuEscorpiao = true;
         while (continueMenuEscorpiao)
         {
-            System.out.println("\n ============== CADASTRO DE ESCORPIAO ==============");
+            System.out.println("\n ============== MENU DE ESCORPIOES ==============");
             System.out.println("\n\t (1) INSERIR");
             System.out.println("\t (2) IMPRIMIR ESCORPIOES REGISTRADOS");
             System.out.println("\t (3) EXCLUIR ESCORPIAO");
@@ -49,7 +47,6 @@ public class MenuEscorpiao {
                     try
                     {
                         escorpiao.setId(Integer.parseInt(leitura.entDados("Digite o codigo da escorpiao que deseja excluir:")));
-
                     }
                     catch(NumberFormatException nfe)
                     {
@@ -64,9 +61,7 @@ public class MenuEscorpiao {
                     } else {
                         System.out.println("Nenhum escorpiao registrado com este codigo");
                     }
-
                     break;
-
 
                 case 9:
                     continueMenuEscorpiao = false;

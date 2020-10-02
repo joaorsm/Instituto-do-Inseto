@@ -7,7 +7,6 @@ public class BancoAranha
 {
     private List<Aranha> bdAranha = new ArrayList<Aranha>();
     private Leitura leitura = new Leitura();
-    private Aranha aranha = new Aranha();
 
     public List<Aranha> getBdAranha()
     {
