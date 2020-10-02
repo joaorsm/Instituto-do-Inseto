@@ -35,8 +35,7 @@ public class BancoEscorpiao
         {
             try
 		    {
-			    escorpiao.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos: BANCO ESCORPIAO")));
-                //System.out.println("\nA quantidade de olhos eh: "+aranha.getQuantidadeOlhos());
+			    escorpiao.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos:")));
                 continueMenuBancoEscorpiao = false;
 		    }
 		    catch(OlhosException oe)
@@ -62,31 +61,7 @@ public class BancoEscorpiao
 
         escorpiao.getRegiao().setEstado(leitura.entDados("Entre com o estado de origem: "));
 
-        //escorpiao.setTeia(Boolean.parseBoolean(leitura.entDados("Produz teia? (true or false): ")));
-        
-        /*if(escorpiao.getPeconhento())
-		{
-			escorpiao.setVeneno(leitura.entDados("Nome do veneno: "));
-			//System.out.println();
-			//aranha.peconhento(aranha.getVeneno());
-		}*/
-		
-		//aranha.seda();
-		//aranha.cacar();
-
-		//aranha.seda(aranha.getTeia());
-
-		//aranha.peconhento(aranha.getPeconhento());
-
-		/*try
-		{
-			escorpiao.setSubOrdem(leitura.entDados("\nInforme a sub ordem: "));
-			//System.out.println("\nSub Ordem..: "+aranha.getSubOrdem());
-		}
-		catch(SubOrdemException soe){
-			soe.avisoSubOrdem(escorpiao);
-		}*/
-
+        escorpiao.setFerrao(Boolean.parseBoolean(leitura.entDados("Ainda tem ferrao? (true or false): ")));
 
         return escorpiao;
     }
@@ -97,22 +72,28 @@ public class BancoEscorpiao
         System.out.println("ID: "+ escorpiao.getId());
         System.out.println("Pernas: "+ escorpiao.getPernas());
 		System.out.println("Olhos: "+ escorpiao.getQuantidadeOlhos());
-		//System.out.println("Peconhento: "+ aranha.getPeconhento());
 		System.out.println("Especie: "+escorpiao.getEspecie());
 		System.out.println("Cor: "+ escorpiao.getCor());
 		System.out.println("Pais: "+ escorpiao.getRegiao().getPais());
         System.out.println("Estado: "+ escorpiao.getRegiao().getEstado());
-        /*if (escorpiao.getTeia())
+        escorpiao.cacar();
+        if(escorpiao.getPeconhento())
         {
-            escorpiao.seda(escorpiao.getTeia());
+            escorpiao.peconhento();
         }else
         {
-            escorpiao.seda(escorpiao.getTeia());
-            escorpiao.seda();
-        }*/
-        escorpiao.cacar();
-        escorpiao.peconhento();
-        //escorpiao.peconhento(escorpiao.getVeneno());
+            System.out.println("Nao peconhento");
+        }
+        if(escorpiao.getFerrao())
+		{
+			System.out.println("Possui ferrao!");
+			escorpiao.alerta();
+		}else
+		{
+			System.out.println("Ja perdeu o ferrao");
+		}
+
+		escorpiao.informativo();
     }
 
     public Escorpiao excluirEscorpiao(Escorpiao escorpiao){

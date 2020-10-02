@@ -68,7 +68,7 @@ public class Aranha extends Aracnideos
 	{
 		if(peconhento)
 		{
-			System.out.println("Aranha peconhento");
+			System.out.println("Aranha peconhenta");
 		}else
 		{
 			System.out.println("Aranha nao peconhenta");
@@ -77,7 +77,6 @@ public class Aranha extends Aracnideos
 
 	public void peconhento(String veneno)
 	{
-
 		System.out.println("O nome do veneno eh: "+veneno);
 	}
 

@@ -35,8 +35,7 @@ public class BancoAranha
         {
             try
 		    {
-			    aranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos: BANCO ARANHA")));
-                //System.out.println("\nA quantidade de olhos eh: "+aranha.getQuantidadeOlhos());
+			    aranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("\nEntre com a quantidade de olhos:")));
                 continueMenuBancoAranha = false;
 		    }
 		    catch(OlhosException oe)
@@ -67,27 +66,15 @@ public class BancoAranha
         if(aranha.getPeconhento())
 		{
 			aranha.setVeneno(leitura.entDados("Nome do veneno: "));
-			//System.out.println();
-			//aranha.peconhento(aranha.getVeneno());
 		}
-		
-		//aranha.seda();
-		//aranha.cacar();
-
-		//aranha.seda(aranha.getTeia());
-
-		//aranha.peconhento(aranha.getPeconhento());
 
 		try
 		{
-			aranha.setSubOrdem(leitura.entDados("\nInforme a sub ordem: "));
-			System.out.println("\nSub Ordem..: "+aranha.getSubOrdem());
+			aranha.setSubOrdem(leitura.entDados("Informe a sub ordem: "));
 		}
 		catch(SubOrdemException soe){
 			soe.avisoSubOrdem(aranha);
 		}
-
-
         return aranha;
     }
 
@@ -97,11 +84,11 @@ public class BancoAranha
         System.out.println("ID: "+ aranha.getId());
         System.out.println("Pernas: "+ aranha.getPernas());
 		System.out.println("Olhos: "+ aranha.getQuantidadeOlhos());
-		//System.out.println("Peconhento: "+ aranha.getPeconhento());
 		System.out.println("Especie: "+aranha.getEspecie());
 		System.out.println("Cor: "+ aranha.getCor());
 		System.out.println("Pais: "+ aranha.getRegiao().getPais());
         System.out.println("Estado: "+ aranha.getRegiao().getEstado());
+        System.out.println("Sub ordem: "+ aranha.getSubOrdem());
         if (aranha.getTeia())
         {
             aranha.seda(aranha.getTeia());
@@ -112,7 +99,10 @@ public class BancoAranha
         }
         aranha.cacar();
         aranha.peconhento(aranha.getPeconhento());
-        aranha.peconhento(aranha.getVeneno());
+        if(aranha.getPeconhento())
+        {
+            aranha.peconhento(aranha.getVeneno());
+        }
     }
 
     public Aranha excluirAranha(Aranha aranha){

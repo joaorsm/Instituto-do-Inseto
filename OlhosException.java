@@ -14,7 +14,7 @@ public class OlhosException extends Exception
 			try
 			{
 				aracnideo.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Tente novamente!")));
-				System.out.println("\nPossui: "+aracnideo.getQuantidadeOlhos()+" olhos..");
+				//System.out.println("\nPossui: "+aracnideo.getQuantidadeOlhos()+" olhos..");
 				
 			}
 			catch(OlhosException oe)

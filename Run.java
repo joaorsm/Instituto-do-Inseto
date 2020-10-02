@@ -3,6 +3,7 @@
 public class Run
 {
 	private static MenuAranha menuaranha = new MenuAranha();
+	private static MenuEscorpiao menuescorpiao = new MenuEscorpiao();
 	public static void main(String[] args)
 	{
 		//====================================== instancias =====================================================
@@ -20,7 +21,7 @@ public class Run
 		aracnideo2.peconhento();
 		*/
 
-		// ===================================== entradas aranha =====================================================
+		
 		
 		boolean continueMenuPrincipal = true;
 		int opcaoMenuPrincipal = 0;
@@ -50,6 +51,10 @@ public class Run
 				case 1:
 					menuaranha.criarMenuAranha();
 					break;
+
+				case 2:
+					menuescorpiao.criarMenuEscorpiao();
+					break;
 				
 				case 9:
 					continueMenuPrincipal = false;
@@ -65,6 +70,8 @@ public class Run
 		
 		
 		/*
+		// ===================================== entradas aranha =====================================================
+		
 		System.out.println("\n ============= Coletando dados de Aranha =============\n");
 
 		//omiranha.setQuantidadeOlhos(Integer.parseInt(leitura.entDados("Entre com a quantidade de olhos: ")));
