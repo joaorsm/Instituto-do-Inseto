@@ -1,7 +1,7 @@
+//João Roberto Savini Merante RA 1886525
 
 import javax.swing.JOptionPane;
 
-//João Roberto Savini Merante RA 1886525
 public abstract class Aracnideos {
 
     private int id;

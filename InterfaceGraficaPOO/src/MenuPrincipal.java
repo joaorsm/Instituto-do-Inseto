@@ -12,6 +12,7 @@
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private BancoAranha bancoAranha = new BancoAranha();
+    private BancoEscorpiao bancoEscorpiao = new BancoEscorpiao();
     private MenuAranha menuAranha = new MenuAranha();
     private MenuEscorpiao menuEscorpiao = new MenuEscorpiao();
     
@@ -34,9 +35,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botaoMenuAranha = new javax.swing.JButton();
         botaoMenuEscorpiao = new javax.swing.JButton();
         botaoSair = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuPrincipal = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        menuInserirAranha = new javax.swing.JMenuItem();
+        menuAlterarAranha = new javax.swing.JMenuItem();
+        menuTabelaAranha = new javax.swing.JMenuItem();
+        menuListaAranha = new javax.swing.JMenuItem();
+        menuComboAranha = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        menuInserirEscorpiao = new javax.swing.JMenuItem();
+        menuAlterarEscorpiao = new javax.swing.JMenuItem();
+        menuTabelaEscorpiao = new javax.swing.JMenuItem();
+        menuListaEscorpiao = new javax.swing.JMenuItem();
+        menuComboEscorpiao = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
         setLocation(new java.awt.Point(0, 0));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botaoMenuAranha.setText("Menu Aranha");
         botaoMenuAranha.addActionListener(new java.awt.event.ActionListener() {
@@ -44,6 +62,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 botaoMenuAranhaActionPerformed(evt);
             }
         });
+        getContentPane().add(botaoMenuAranha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 117, -1));
 
         botaoMenuEscorpiao.setText("Menu Escorpiao");
         botaoMenuEscorpiao.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +70,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 botaoMenuEscorpiaoActionPerformed(evt);
             }
         });
+        getContentPane().add(botaoMenuEscorpiao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         botaoSair.setText("Sair");
         botaoSair.addActionListener(new java.awt.event.ActionListener() {
@@ -58,33 +78,106 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 botaoSairActionPerformed(evt);
             }
         });
+        getContentPane().add(botaoSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 88, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botaoMenuEscorpiao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botaoMenuAranha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(281, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botaoSair)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(botaoMenuAranha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoMenuEscorpiao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/resize-HaeckelArachnida.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 11, -1, -1));
+
+        menuPrincipal.setText("Principal");
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/5a.jpg"))); // NOI18N
+        jMenu1.setText("Menu Aranha");
+
+        menuInserirAranha.setText("Inserir");
+        menuInserirAranha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInserirAranhaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuInserirAranha);
+
+        menuAlterarAranha.setText("Alterar");
+        menuAlterarAranha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarAranhaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuAlterarAranha);
+
+        menuTabelaAranha.setText("Abrir Tabela");
+        menuTabelaAranha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTabelaAranhaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuTabelaAranha);
+
+        menuListaAranha.setText("Abrir Lista");
+        menuListaAranha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListaAranhaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuListaAranha);
+
+        menuComboAranha.setText("Abrir Combo Box");
+        menuComboAranha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuComboAranhaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuComboAranha);
+
+        menuPrincipal.add(jMenu1);
+
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/5e.jpg"))); // NOI18N
+        jMenu2.setText("Menu Escorpiao");
+
+        menuInserirEscorpiao.setText("Inserir");
+        menuInserirEscorpiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInserirEscorpiaoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuInserirEscorpiao);
+
+        menuAlterarEscorpiao.setText("Alterar");
+        menuAlterarEscorpiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarEscorpiaoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuAlterarEscorpiao);
+
+        menuTabelaEscorpiao.setText("Abrir Tabela");
+        menuTabelaEscorpiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTabelaEscorpiaoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuTabelaEscorpiao);
+
+        menuListaEscorpiao.setText("Abrir Lista");
+        menuListaEscorpiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuListaEscorpiaoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuListaEscorpiao);
+
+        menuComboEscorpiao.setText("Abrir Combo Box");
+        menuComboEscorpiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuComboEscorpiaoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuComboEscorpiao);
+
+        menuPrincipal.add(jMenu2);
+
+        jMenuBar1.add(menuPrincipal);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
         setLocationRelativeTo(null);
@@ -102,6 +195,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuEscorpiao.criarMenuEscorpiao();
     }//GEN-LAST:event_botaoMenuEscorpiaoActionPerformed
 
+    private void menuInserirAranhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInserirAranhaActionPerformed
+        new CadastroAranha().setVisible(true);
+    }//GEN-LAST:event_menuInserirAranhaActionPerformed
+
+    private void menuComboAranhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuComboAranhaActionPerformed
+        new JanelaComboAranha().showComboAranha(bancoAranha);
+    }//GEN-LAST:event_menuComboAranhaActionPerformed
+
+    private void menuInserirEscorpiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInserirEscorpiaoActionPerformed
+        new CadastroEscorpiao().setVisible(true);
+    }//GEN-LAST:event_menuInserirEscorpiaoActionPerformed
+
+    private void menuComboEscorpiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuComboEscorpiaoActionPerformed
+        new JanelaComboEscorpiao().showComboEscorpiao(bancoEscorpiao);
+    }//GEN-LAST:event_menuComboEscorpiaoActionPerformed
+
+    private void menuTabelaAranhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTabelaAranhaActionPerformed
+        new JanelaTabelaAranha().showTableAranha(bancoAranha);
+    }//GEN-LAST:event_menuTabelaAranhaActionPerformed
+
+    private void menuListaAranhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListaAranhaActionPerformed
+        new JanelaListaAranha().showListAranha(bancoAranha);
+    }//GEN-LAST:event_menuListaAranhaActionPerformed
+
+    private void menuAlterarAranhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarAranhaActionPerformed
+        new AlteraAranha().setVisible(true);
+    }//GEN-LAST:event_menuAlterarAranhaActionPerformed
+
+    private void menuAlterarEscorpiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarEscorpiaoActionPerformed
+        new AlteraEscorpiao().setVisible(true);
+    }//GEN-LAST:event_menuAlterarEscorpiaoActionPerformed
+
+    private void menuTabelaEscorpiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTabelaEscorpiaoActionPerformed
+        new JanelaTabelaEscorpiao().showTableEscorpiao(bancoEscorpiao);
+    }//GEN-LAST:event_menuTabelaEscorpiaoActionPerformed
+
+    private void menuListaEscorpiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuListaEscorpiaoActionPerformed
+        new JanelaListaEscorpiao().showListEscorpiao(bancoEscorpiao);
+    }//GEN-LAST:event_menuListaEscorpiaoActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -135,11 +270,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 new MenuPrincipal().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoMenuAranha;
     private javax.swing.JButton botaoMenuEscorpiao;
     private javax.swing.JButton botaoSair;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem menuAlterarAranha;
+    private javax.swing.JMenuItem menuAlterarEscorpiao;
+    private javax.swing.JMenuItem menuComboAranha;
+    private javax.swing.JMenuItem menuComboEscorpiao;
+    private javax.swing.JMenuItem menuInserirAranha;
+    private javax.swing.JMenuItem menuInserirEscorpiao;
+    private javax.swing.JMenuItem menuListaAranha;
+    private javax.swing.JMenuItem menuListaEscorpiao;
+    private javax.swing.JMenu menuPrincipal;
+    private javax.swing.JMenuItem menuTabelaAranha;
+    private javax.swing.JMenuItem menuTabelaEscorpiao;
     // End of variables declaration//GEN-END:variables
 }

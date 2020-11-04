@@ -1,7 +1,6 @@
 //João Roberto Savini Merante RA 1886525
-
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Joao
  */
-public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
+public class JanelaListaEscorpiao extends javax.swing.JFrame {
 
     /**
-     * Creates new form JanelaTabelaEscorpiao
+     * Creates new form JanelaListaEscorpiao
      */
-    public JanelaTabelaEscorpiao() {
+    public JanelaListaEscorpiao() {
         initComponents();
     }
 
@@ -31,62 +30,49 @@ public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableEscorpiao = new javax.swing.JTable();
+        listEscorpiao = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tabela Escorpião");
+        setTitle("Lista Escorpião");
 
-        tableEscorpiao.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Especie", "Qtd Olhos", "Cor", "País", "Estado", "Peçonhento", "Ferrao", "Pernas"
-            }
-        ));
-        tableEscorpiao.addMouseListener(new java.awt.event.MouseAdapter() {
+        listEscorpiao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableEscorpiaoMouseClicked(evt);
+                listEscorpiaoMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableEscorpiao);
+        jScrollPane1.setViewportView(listEscorpiao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1660, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableEscorpiaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEscorpiaoMouseClicked
-        String componente1 = "";
-        int i;
-        //int coluna;
-        int linha = tableEscorpiao.getSelectedRow();
+    private void listEscorpiaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listEscorpiaoMouseClicked
+        String componente = listEscorpiao.getSelectedValue();
+        JOptionPane.showMessageDialog(null, "Escorpiao: " +componente, "Escorpiao selecionado", 1);
+    }//GEN-LAST:event_listEscorpiaoMouseClicked
 
-        for (i = 0; i < tableEscorpiao.getColumnCount(); i++) {
-            componente1 += tableEscorpiao.getModel().getValueAt(tableEscorpiao.getSelectedRow(), i).toString();
-            if (i < (tableEscorpiao.getColumnCount() - 1)) {
-                componente1 += " - ";
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Escorpiao: " + componente1, "Escorpiao selecionada", 1);
-    }//GEN-LAST:event_tableEscorpiaoMouseClicked
-
-    public void showTableEscorpiao(BancoEscorpiao bancoEscorpiao) {
+    public void showListEscorpiao(BancoEscorpiao bancoEscorpiao) {
         this.setVisible(true);
         Escorpiao escorpiao = new Escorpiao();
-        DefaultTableModel modeloTabelaEscorpiao = new DefaultTableModel();
-        modeloTabelaEscorpiao = (DefaultTableModel) tableEscorpiao.getModel();
-        modeloTabelaEscorpiao.setRowCount(0);
+        DefaultListModel modeloListaEscorpiao = new DefaultListModel();
+        modeloListaEscorpiao.removeAllElements();
 
         for (int i = 0; i < bancoEscorpiao.getBdEscorpiao().size(); i++) {
             try {
@@ -104,12 +90,12 @@ public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
             } catch (OlhosException oe) {
                 oe.avisoOlhos();
             }
-
-            modeloTabelaEscorpiao.insertRow(i, new Object[]{escorpiao.getId(), escorpiao.getEspecie(),
-                escorpiao.getQuantidadeOlhos(), escorpiao.getCor(),
-                escorpiao.getRegiao().getPais(), escorpiao.getRegiao().getEstado(),
-                escorpiao.getPeconhento(), escorpiao.getFerrao(), escorpiao.getPernas()});
+            modeloListaEscorpiao.addElement(escorpiao.getId() + " - " + escorpiao.getEspecie() + " - "
+                    + escorpiao.getQuantidadeOlhos() + " - " + escorpiao.getCor() + " - "
+                    + escorpiao.getRegiao().getPais() + " - " + escorpiao.getRegiao().getEstado() + " - "
+                    + escorpiao.getPeconhento() + " - " + escorpiao.getFerrao() + " - " + escorpiao.getPernas());
         }
+        listEscorpiao.setModel(modeloListaEscorpiao);
     }
 
     /**
@@ -129,26 +115,26 @@ public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaTabelaEscorpiao().setVisible(true);
+                new JanelaListaEscorpiao().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableEscorpiao;
+    private javax.swing.JList<String> listEscorpiao;
     // End of variables declaration//GEN-END:variables
 }

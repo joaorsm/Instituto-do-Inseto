@@ -6,7 +6,7 @@ import java.util.List;
 public class BancoAranha {
 
     private static List<Aranha> bdAranha = new ArrayList<Aranha>();
-    private static Aranha aranha = new Aranha();
+    private Aranha aranha = new Aranha();
 
     public List<Aranha> getBdAranha() {
         return bdAranha;

@@ -1,26 +1,25 @@
 //João Roberto Savini Merante RA 1886525
-
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  *
  * @author Joao
  */
-public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
+public class JanelaComboEscorpiao extends javax.swing.JFrame {
 
     /**
-     * Creates new form JanelaTabelaEscorpiao
+     * Creates new form JanelaComboEscorpiao
      */
-    public JanelaTabelaEscorpiao() {
+    public JanelaComboEscorpiao() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,64 +29,53 @@ public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableEscorpiao = new javax.swing.JTable();
+        comboEscorpiao = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tabela Escorpião");
+        setTitle("Combo Box Escorpião");
 
-        tableEscorpiao.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Especie", "Qtd Olhos", "Cor", "País", "Estado", "Peçonhento", "Ferrao", "Pernas"
-            }
-        ));
-        tableEscorpiao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableEscorpiaoMouseClicked(evt);
+        comboEscorpiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEscorpiaoActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(tableEscorpiao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1660, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboEscorpiao, 0, 380, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboEscorpiao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableEscorpiaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEscorpiaoMouseClicked
-        String componente1 = "";
-        int i;
-        //int coluna;
-        int linha = tableEscorpiao.getSelectedRow();
-
-        for (i = 0; i < tableEscorpiao.getColumnCount(); i++) {
-            componente1 += tableEscorpiao.getModel().getValueAt(tableEscorpiao.getSelectedRow(), i).toString();
-            if (i < (tableEscorpiao.getColumnCount() - 1)) {
-                componente1 += " - ";
-            }
+    private void comboEscorpiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEscorpiaoActionPerformed
+        if(comboEscorpiao.getSelectedIndex()  >= 1){
+            String componente = "";
+            componente = comboEscorpiao.getSelectedItem().toString();
+            JOptionPane.showMessageDialog(null, "Escorpiao: " +componente, "Escorpiao selecionado", 1);
         }
-        JOptionPane.showMessageDialog(null, "Escorpiao: " + componente1, "Escorpiao selecionada", 1);
-    }//GEN-LAST:event_tableEscorpiaoMouseClicked
+    }//GEN-LAST:event_comboEscorpiaoActionPerformed
 
-    public void showTableEscorpiao(BancoEscorpiao bancoEscorpiao) {
+    public void showComboEscorpiao(BancoEscorpiao bancoEscorpiao){
         this.setVisible(true);
         Escorpiao escorpiao = new Escorpiao();
-        DefaultTableModel modeloTabelaEscorpiao = new DefaultTableModel();
-        modeloTabelaEscorpiao = (DefaultTableModel) tableEscorpiao.getModel();
-        modeloTabelaEscorpiao.setRowCount(0);
-
+        
+        comboEscorpiao.removeAllItems();
+        comboEscorpiao.addItem("Escolha uma opção");
+        
         for (int i = 0; i < bancoEscorpiao.getBdEscorpiao().size(); i++) {
             try {
                 escorpiao.setId(bancoEscorpiao.getBdEscorpiao().get(i).getId());
@@ -100,18 +88,17 @@ public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
                 escorpiao.setPernas(bancoEscorpiao.getBdEscorpiao().get(i).getPernas());
                 escorpiao.setFerrao(bancoEscorpiao.getBdEscorpiao().get(i).getFerrao());
             } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null, "Tipo de não aceito", "Erro no cadastro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Tipo de dados não aceito", "Erro no cadastro", JOptionPane.ERROR_MESSAGE);
             } catch (OlhosException oe) {
                 oe.avisoOlhos();
             }
-
-            modeloTabelaEscorpiao.insertRow(i, new Object[]{escorpiao.getId(), escorpiao.getEspecie(),
-                escorpiao.getQuantidadeOlhos(), escorpiao.getCor(),
-                escorpiao.getRegiao().getPais(), escorpiao.getRegiao().getEstado(),
-                escorpiao.getPeconhento(), escorpiao.getFerrao(), escorpiao.getPernas()});
+            comboEscorpiao.addItem(escorpiao.getId() + " - " + escorpiao.getEspecie() + " - "
+                    + escorpiao.getQuantidadeOlhos() + " - " + escorpiao.getCor() + " - "
+                    + escorpiao.getRegiao().getPais() + " - " + escorpiao.getRegiao().getEstado() + " - "
+                    + escorpiao.getPeconhento() + " - " + escorpiao.getFerrao() + " - " + escorpiao.getPernas()); 
         }
     }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -129,26 +116,25 @@ public class JanelaTabelaEscorpiao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboEscorpiao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaTabelaEscorpiao().setVisible(true);
+                new JanelaComboEscorpiao().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableEscorpiao;
+    private javax.swing.JComboBox<String> comboEscorpiao;
     // End of variables declaration//GEN-END:variables
 }

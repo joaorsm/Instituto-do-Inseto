@@ -1,10 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Principal"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Menu Aranha"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Escorpiao"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuInserirEscorpiao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inserir"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuInserirEscorpiaoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuAlterarEscorpiao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alterar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAlterarEscorpiaoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuTabelaEscorpiao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Abrir Tabela"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuTabelaEscorpiaoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuListaEscorpiao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Abrir Lista"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuListaEscorpiaoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuComboEscorpiao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Abrir Combo Box"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuComboEscorpiaoActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Menu>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Menu Escorpi&#xe3;o"/>
   </Properties>
   <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
@@ -27,11 +97,17 @@
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="botaoConsultar" alignment="0" pref="150" max="32767" attributes="0"/>
-                          <Component id="botaoAlterar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="botaoExcluir" alignment="0" max="32767" attributes="0"/>
-                          <Component id="botaoInserir" alignment="1" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="botaoConsultar" alignment="0" pref="150" max="32767" attributes="0"/>
+                              <Component id="botaoAlterar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botaoExcluir" alignment="0" max="32767" attributes="0"/>
+                              <Component id="botaoInserir" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="rotuloImageEscorpiao" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -84,6 +160,10 @@
                           <Component id="botaoAtualizarTabela" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="botaoAbrirTabela" min="-2" pref="143" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="botaoAbrirLista" min="-2" pref="143" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="botaoAbrirCombo" min="-2" pref="143" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="botaoVoltar" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -97,7 +177,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="caixaId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -128,8 +208,19 @@
                           <Component id="caixaEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rotuloEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="caixaPeconhento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rotuloPeconhento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rotuloFerrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="caixaFerrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="botaoInserir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -141,26 +232,19 @@
                       <Component id="botaoAlterar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="botaoExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="rotuloImageEscorpiao" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="caixaPeconhento" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rotuloPeconhento" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rotuloFerrao" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="caixaFerrao" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="44" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="125" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoAtualizarTabela" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoAbrirTabela" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoAbrirLista" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoAbrirCombo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -168,6 +252,35 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="rotuloId">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="ID:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="caixaId">
+    </Component>
+    <Component class="javax.swing.JLabel" name="rotuloOlhos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quantidade de Olhos:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="caixaOlhos">
+    </Component>
+    <Component class="javax.swing.JLabel" name="rotuloEspecie">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Especie:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="caixaEspecie">
+    </Component>
+    <Component class="javax.swing.JLabel" name="rotuloCor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cor:"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="caixaCor">
     </Component>
     <Component class="javax.swing.JLabel" name="rotuloPais">
@@ -184,12 +297,26 @@
     </Component>
     <Component class="javax.swing.JTextField" name="caixaEstado">
     </Component>
-    <Component class="javax.swing.JButton" name="botaoAtualizarTabela">
+    <Component class="javax.swing.JLabel" name="rotuloPeconhento">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Atualizar Tabela"/>
+        <Property name="text" type="java.lang.String" value="Pe&#xe7;onhento (true or false):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="caixaPeconhento">
+    </Component>
+    <Component class="javax.swing.JLabel" name="rotuloFerrao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ferrao (true or false):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="caixaFerrao">
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoInserir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Inserir"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAtualizarTabelaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoInserirActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoConsultar">
@@ -216,12 +343,60 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoExcluirActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JButton" name="botaoLimpar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoLimparActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoSalvar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSalvarActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="botaoVoltar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoVoltarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoAtualizarTabela">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Atualizar Tabela"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAtualizarTabelaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoAbrirTabela">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abrir Tabela"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAbrirTabelaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoAbrirLista">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abrir Lista"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAbrirListaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botaoAbrirCombo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abrir Combo Box"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAbrirComboActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -305,80 +480,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="botaoLimpar">
+    <Component class="javax.swing.JLabel" name="rotuloImageEscorpiao">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Limpar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoLimparActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botaoSalvar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Salvar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSalvarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botaoInserir">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Inserir"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoInserirActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="rotuloId">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="3"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/resize-16042758991790258728a6dd1190d12ca35661bfd2a196c024d3.jpg"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="ID:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="botaoAbrirTabela">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Abrir Tabela"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoAbrirTabelaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="caixaId">
-    </Component>
-    <Component class="javax.swing.JLabel" name="rotuloOlhos">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Quantidade de Olhos:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="caixaOlhos">
-    </Component>
-    <Component class="javax.swing.JLabel" name="rotuloPeconhento">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pe&#xe7;onhento (true or false):"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="caixaPeconhento">
-    </Component>
-    <Component class="javax.swing.JLabel" name="rotuloEspecie">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Especie:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="caixaEspecie">
-    </Component>
-    <Component class="javax.swing.JLabel" name="rotuloCor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cor:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="rotuloFerrao">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ferrao (true or false):"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="caixaFerrao">
     </Component>
   </SubComponents>
 </Form>

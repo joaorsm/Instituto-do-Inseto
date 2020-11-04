@@ -1,25 +1,24 @@
 //João Roberto Savini Merante RA 1886525
-
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  *
  * @author Joao
  */
-public class JanelaTabelaAranha extends javax.swing.JFrame {
+public class JanelaComboAranha extends javax.swing.JFrame {
 
     /**
-     * Creates new form JanelaTabelaAranha
+     * Creates new form JanelaComboAranha
      */
-    public JanelaTabelaAranha() {
+    public JanelaComboAranha() {
         initComponents();
-    }  
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,62 +29,52 @@ public class JanelaTabelaAranha extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableAranha = new javax.swing.JTable();
+        comboAranha = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tabela Aranha");
+        setTitle("Combo Box Aranha");
 
-        tableAranha.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Especie", "Sub Ordem", "Qtd Olhos", "Cor", "País", "Estado", "Teia", "Peçonhento", "Veneno", "Pernas"
-            }
-        ));
-        tableAranha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableAranhaMouseClicked(evt);
+        comboAranha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboAranhaActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(tableAranha);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1660, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboAranha, 0, 380, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboAranha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableAranhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAranhaMouseClicked
-        String componente = "";
-        int coluna;
-        int linha = tableAranha.getSelectedRow() ;
-        
-        for(coluna = 0; coluna < tableAranha.getColumnCount(); coluna++){
-            componente += tableAranha.getModel().getValueAt(linha, coluna).toString();
-            if (coluna < (tableAranha.getColumnCount() - 1)) {
-                componente += " - ";
-            }
+    private void comboAranhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAranhaActionPerformed
+        if(comboAranha.getSelectedIndex()  >= 1){
+            String componente = "";
+            componente = comboAranha.getSelectedItem().toString();
+            JOptionPane.showMessageDialog(null, "Aranha: " +componente, "Escorpiao selecionada", 1);
         }
-        JOptionPane.showMessageDialog(null, "Aranha: " + componente, "Aranha selecionada", 1);
-    }//GEN-LAST:event_tableAranhaMouseClicked
+    }//GEN-LAST:event_comboAranhaActionPerformed
 
-    public void showTableAranha(BancoAranha bancoAranha) {
+    public void showComboAranha(BancoAranha bancoAranha) {
         this.setVisible(true);
         Aranha aranha = new Aranha();
-        DefaultTableModel modeloTabelaAranha = new DefaultTableModel();
-        modeloTabelaAranha = (DefaultTableModel) tableAranha.getModel();
-        modeloTabelaAranha.setRowCount(0);
+        
+        comboAranha.removeAllItems();
+        comboAranha.addItem("Escolha uma opção");
 
         for (int i = 0; i < bancoAranha.getBdAranha().size(); i++) {
             try {
@@ -101,18 +90,18 @@ public class JanelaTabelaAranha extends javax.swing.JFrame {
                 aranha.setVeneno(bancoAranha.getBdAranha().get(i).getVeneno());
                 aranha.setPernas(bancoAranha.getBdAranha().get(i).getPernas());
             } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(null, "Tipo de não aceito", "Erro no cadastro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Tipo de dados não aceito", "Erro no cadastro", JOptionPane.ERROR_MESSAGE);
             } catch (OlhosException oe) {
                 oe.avisoOlhos();
             } catch (SubOrdemException soe) {
                 soe.avisoSubOrdem();
             }
 
-            modeloTabelaAranha.insertRow(i, new Object[]{aranha.getId(), aranha.getEspecie(),
-                aranha.getSubOrdem(), aranha.getQuantidadeOlhos(), aranha.getCor(),
-                aranha.getRegiao().getPais(), aranha.getRegiao().getEstado(), aranha.getTeia(),
-                aranha.getPeconhento(), aranha.getVeneno(), aranha.getPernas()});
-
+            comboAranha.addItem(aranha.getId() + " - " + aranha.getEspecie() + " - "
+                    + aranha.getSubOrdem() + " - " + aranha.getQuantidadeOlhos() + " - " + aranha.getCor() + " - "
+                    + aranha.getRegiao().getPais() + " - " + aranha.getRegiao().getEstado()
+                    + " - " + aranha.getTeia() + " - " + aranha.getPeconhento() + " - " + aranha.getVeneno()
+                    + " - " + aranha.getPernas());
         }
     }
     
@@ -133,26 +122,25 @@ public class JanelaTabelaAranha extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaComboAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaTabelaAranha().setVisible(true);
+                new JanelaComboAranha().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableAranha;
+    private javax.swing.JComboBox<String> comboAranha;
     // End of variables declaration//GEN-END:variables
 }

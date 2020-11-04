@@ -6,8 +6,7 @@ import java.util.List;
 public class BancoEscorpiao {
 
     private static List<Escorpiao> bdEscorpiao = new ArrayList<Escorpiao>();
-    private static Aranha aranha = new Aranha();
-    private static Leitura leitura = new Leitura();
+    private Escorpiao escorpiao = new Escorpiao();
 
     public List<Escorpiao> getBdEscorpiao() {
         return bdEscorpiao;

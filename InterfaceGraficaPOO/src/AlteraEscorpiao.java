@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Joao
@@ -53,6 +52,7 @@ public class AlteraEscorpiao extends javax.swing.JFrame {
         caixaFerrao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Escorpião");
 
         jLabel1.setText("Antigo ID:");
 
@@ -213,17 +213,31 @@ public class AlteraEscorpiao extends javax.swing.JFrame {
         Escorpiao novoEscorpiao = new Escorpiao();
         BancoEscorpiao bancoEscorpiao = new BancoEscorpiao();
 
-        escorpiao.setId(Integer.parseInt(caixaIdAntigo.getText()));
-
         try {
-            novoEscorpiao.setId(Integer.parseInt(caixaId.getText()));
-            novoEscorpiao.setQuantidadeOlhos(Integer.parseInt(caixaOlhos.getText()));
-            novoEscorpiao.setPeconhento(Boolean.parseBoolean(caixaPeconhento.getText()));
-            novoEscorpiao.setEspecie(caixaEspecie.getText());
-            novoEscorpiao.setCor(caixaCor.getText());
-            novoEscorpiao.getRegiao().setPais(caixaPais.getText());
-            novoEscorpiao.getRegiao().setEstado(caixaEstado.getText());
-            novoEscorpiao.setFerrao(Boolean.parseBoolean(caixaFerrao.getText()));
+            escorpiao.setId(Integer.parseInt(caixaIdAntigo.getText()));
+            escorpiao = bancoEscorpiao.consultaEscorpiaoCodigo(escorpiao);
+            if (escorpiao != null) {
+                novoEscorpiao.setId(Integer.parseInt(caixaId.getText()));
+                novoEscorpiao.setQuantidadeOlhos(Integer.parseInt(caixaOlhos.getText()));
+                novoEscorpiao.setPeconhento(Boolean.parseBoolean(caixaPeconhento.getText()));
+                novoEscorpiao.setEspecie(caixaEspecie.getText());
+                novoEscorpiao.setCor(caixaCor.getText());
+                novoEscorpiao.getRegiao().setPais(caixaPais.getText());
+                novoEscorpiao.getRegiao().setEstado(caixaEstado.getText());
+                novoEscorpiao.setFerrao(Boolean.parseBoolean(caixaFerrao.getText()));
+                if (bancoEscorpiao.consultaEscorpiaoCodigo(novoEscorpiao) == null) {
+                    bancoEscorpiao.alterarEscorpiao(escorpiao, novoEscorpiao);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "ID ja existe", "Erro", 0);
+                    caixaId.setText("");
+                    caixaId.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Não existe um escorpião com este ID!", "Erro", 1);
+                caixaIdAntigo.setText("");
+                caixaIdAntigo.requestFocus();
+            }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, "Tipo de dado não aceito", "Erro no cadastro", JOptionPane.ERROR_MESSAGE);
         } catch (OlhosException oe) {
@@ -231,9 +245,6 @@ public class AlteraEscorpiao extends javax.swing.JFrame {
             caixaOlhos.setText("");
             caixaOlhos.requestFocus();
         }
-
-        bancoEscorpiao.alterarEscorpiao(escorpiao, novoEscorpiao);
-        dispose();
     }//GEN-LAST:event_botaoSalvarActionPerformed
 
     /**

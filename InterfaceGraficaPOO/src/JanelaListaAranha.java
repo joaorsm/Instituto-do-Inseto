@@ -1,7 +1,6 @@
 //João Roberto Savini Merante RA 1886525
-
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,14 +11,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Joao
  */
-public class JanelaTabelaAranha extends javax.swing.JFrame {
+public class JanelaListaAranha extends javax.swing.JFrame {
 
     /**
-     * Creates new form JanelaTabelaAranha
+     * Creates new form JanelaListaAranha
      */
-    public JanelaTabelaAranha() {
+    public JanelaListaAranha() {
         initComponents();
-    }  
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,61 +30,49 @@ public class JanelaTabelaAranha extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableAranha = new javax.swing.JTable();
+        listAranha = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tabela Aranha");
+        setTitle("Lista Aranha");
 
-        tableAranha.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Especie", "Sub Ordem", "Qtd Olhos", "Cor", "País", "Estado", "Teia", "Peçonhento", "Veneno", "Pernas"
-            }
-        ));
-        tableAranha.addMouseListener(new java.awt.event.MouseAdapter() {
+        listAranha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableAranhaMouseClicked(evt);
+                listAranhaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableAranha);
+        jScrollPane1.setViewportView(listAranha);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1660, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableAranhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAranhaMouseClicked
-        String componente = "";
-        int coluna;
-        int linha = tableAranha.getSelectedRow() ;
-        
-        for(coluna = 0; coluna < tableAranha.getColumnCount(); coluna++){
-            componente += tableAranha.getModel().getValueAt(linha, coluna).toString();
-            if (coluna < (tableAranha.getColumnCount() - 1)) {
-                componente += " - ";
-            }
-        }
+    private void listAranhaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listAranhaMouseClicked
+        String componente = listAranha.getSelectedValue();
         JOptionPane.showMessageDialog(null, "Aranha: " + componente, "Aranha selecionada", 1);
-    }//GEN-LAST:event_tableAranhaMouseClicked
+    }//GEN-LAST:event_listAranhaMouseClicked
 
-    public void showTableAranha(BancoAranha bancoAranha) {
+    public void showListAranha(BancoAranha bancoAranha) {
         this.setVisible(true);
         Aranha aranha = new Aranha();
-        DefaultTableModel modeloTabelaAranha = new DefaultTableModel();
-        modeloTabelaAranha = (DefaultTableModel) tableAranha.getModel();
-        modeloTabelaAranha.setRowCount(0);
+        DefaultListModel modeloListaAranha = new DefaultListModel();
+        modeloListaAranha.removeAllElements();
 
         for (int i = 0; i < bancoAranha.getBdAranha().size(); i++) {
             try {
@@ -108,14 +95,15 @@ public class JanelaTabelaAranha extends javax.swing.JFrame {
                 soe.avisoSubOrdem();
             }
 
-            modeloTabelaAranha.insertRow(i, new Object[]{aranha.getId(), aranha.getEspecie(),
-                aranha.getSubOrdem(), aranha.getQuantidadeOlhos(), aranha.getCor(),
-                aranha.getRegiao().getPais(), aranha.getRegiao().getEstado(), aranha.getTeia(),
-                aranha.getPeconhento(), aranha.getVeneno(), aranha.getPernas()});
-
+            modeloListaAranha.addElement(aranha.getId() + " - " + aranha.getEspecie() + " - "
+                    + aranha.getSubOrdem() + " - " + aranha.getQuantidadeOlhos() + " - " + aranha.getCor() + " - "
+                    + aranha.getRegiao().getPais() + " - " + aranha.getRegiao().getEstado()
+                    + " - " + aranha.getTeia() + " - " + aranha.getPeconhento() + " - " + aranha.getVeneno()
+                    + " - " + aranha.getPernas());
         }
+        listAranha.setModel(modeloListaAranha);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -133,26 +121,26 @@ public class JanelaTabelaAranha extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JanelaTabelaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JanelaListaAranha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JanelaTabelaAranha().setVisible(true);
+                new JanelaListaAranha().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableAranha;
+    private javax.swing.JList<String> listAranha;
     // End of variables declaration//GEN-END:variables
 }
